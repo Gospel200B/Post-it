@@ -1,0 +1,27 @@
+{
+  "name": "post-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gospel200B/Post-it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gospel200B/Post-it/issues"
+  },
+  "homepage": "https://github.com/Gospel200B/Post-it#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.8.3",
+    "mongoose": "^7.0.1",
+    "nodemon": "^2.0.21"
+  }
+}
