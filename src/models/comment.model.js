@@ -4,7 +4,7 @@ const{Schema, model} = require('mongoose');
 const commmentSchema = new Schema({
     comment: {
         type: String,
-        required: true,
+        required: [true, "Drop some notes"],
         trim: true
     },
     user: {
