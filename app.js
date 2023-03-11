@@ -1,20 +1,24 @@
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const dotenv = require('dotenv');
+const express = require('express');
+const mongoose = require('mongoose')
+const app = express();
+const router = require('./src/routes/index.routes');
+require('dotenv').config();
 
-// const userRoute = require('../Post-it/src/routes/user.route')
-// const app = express();
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use('/api/v1', router);
+const MONGODB_URI = "mongodb+srv://Ugochukwu:gospel123@cluster0.l6lajtd.mongodb.net/?retryWrites=true&w=majority"
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => {
+    console.log("Connected to our MongoDb database!");
+})
+.catch((err) => {
+    console.log(err);
+})
 
-// const dB = "mongodb+srv://gospel:gospel123@cluster0.lbdonfl.mongodb.net/?retryWrites=true&w=majority"
-// mongoose.connect(dB,{})
-// .then(() => app.listen(5050))
-// .catch((error) => console.error(error))
-
-// app.get('/', (req, res) => {
-//     res.status(201).json({
-//         message: 'Welcome to the API'
-//     })
-// })
+const port = process.env.PORT || 7500;
+ 
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});

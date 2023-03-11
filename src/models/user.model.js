@@ -1,6 +1,8 @@
 const {Schema, model} = require ('mongoose');
 const validator = require('validator');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
+
+
 const userSchema = new Schema({
     userName : {
         type : String,
@@ -49,16 +51,21 @@ const userSchema = new Schema({
 {
     toJson: {virtuals: true},
     toObject: {virtuals: true}
-},
+},{timestamps : true});
 
 // fire a function b4 doc is saved 
-userSchema.pre('save', async function (next){
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt)
-    next();
-}),
+userSchema.pre("save", async function (next){
+    //this only works if password is modified
+    if(!this.isModified("password"))
+    return next()
+    
+    // Hash the password with salt of 10;
 
-//static method to login user
+    this.password = await bcrypt.hash(this.password, 10)
+    });
+
+
+// static method to login user
 userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({email});
     if (!user) {
@@ -69,9 +76,8 @@ userSchema.statics.login = async function (email, password) {
         throw new Error('Invalid email or password');
     }
     return user;
-},
+};
 
-{timestamps : true});
 
 const userModel= model('User', userSchema);
 module.exports = userModel;
