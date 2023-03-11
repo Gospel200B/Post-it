@@ -24,7 +24,7 @@ class UserService {
     }
     //deleteUser
     async deleteUser (id) {
-        return await userModel.findByIdAndDelete(id);
+        return await userModel.findByIdAndDelete(id, {active: true}, {new: true});
     }
 }
 

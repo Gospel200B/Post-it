@@ -1,31 +1,31 @@
 const userService = require('../services/user.service');
 
 class UserController {
-    async createUser(req, res) {
-        const { userName, password, email } = req.body;
+    // async createUser(req, res) {
+    //     const { userName, password, email } = req.body;
 
-        if (!userName || !password || !email) {
-            return res.status(403).json({
-                Message : 'All field required',
-                success : false
-            })
-        }
-        const existingUser = await userService.createUser({
-            userName: req.body.name.toLowerCase()
-        })
+    //     if (!userName || !password || !email) {
+    //         return res.status(403).json({
+    //             Message : 'All field required',
+    //             success : false
+    //         })
+    //     }
+    //     const existingUser = await userService.createUser({
+    //         userName: req.body.name.toLowerCase()
+    //     })
 
-        if (existingUser) res.status(403).json({
-            success: false,
-            message: "User already exist"
-        })
+    //     if (existingUser) res.status(403).json({
+    //         success: false,
+    //         message: "User already exist"
+    //     })
 
-        const newUser = await userService.createUser(reqbody)
-        res.status(201).json({
-            success: true,
-            message: "Account successfully created",
-            data: newUser
-        })
-    }
+    //     const newUser = await userService.createUser(reqbody)
+    //     res.status(201).json({
+    //         success: true,
+    //         message: "Account successfully created",
+    //         data: newUser
+    //     })
+    // }
     async updateUser(req, res) {
         const userId = req.params.user;
         const updateData = req.body

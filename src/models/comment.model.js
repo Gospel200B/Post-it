@@ -1,5 +1,4 @@
 const{Schema, model} = require('mongoose');
-// const postModel =require('../models/post.model');
 
 const commmentSchema = new Schema({
     comment: {
