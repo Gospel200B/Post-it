@@ -19,12 +19,7 @@ const handleErrors = () => {
     return errors;
 }
 
-// const maxAge = 3 * 24 * 60 * 60;
-// const createToken = (id) => {
-//     return jwt.sign({_id: id}, "Post-it secret", {
-//         expiresIn: maxAge
-//     })
-// }
+
 
 module.exports.signup_get = (req, res) => {
     res.render('Signup')
