@@ -1,15 +1,36 @@
 const commentService = require('../services/comment.service');
+const commentModel = require('../models/comment.model');
 
+const handleErrors = (err) => {
+    console.log(err._message, err.code);
+    let errors = {title: '', body: ''};
+
+//     //validation errors
+    if(err._message.includes('Post validation failed')) {
+        Object.values(err.errors).forEach(({properties}) => {
+            errors[properties.path] = properties._message;
+        })
+    }
+
+    return errors;
+}
 class CommentController {
     async createComment(req, res) {
-        const reqbody = req.body;
+        const {comment} = req.body;
+        
+        const { title, body} = req.body;
 
-        const comment = await commentService.createComment({reqbody})
-        res.status(200).json({
-            success: true,
-            message: "Comment sent successfully",
-            data: comment
-        })
+    try {
+      const post = await commentService.createComment({ comment});
+      return res.status(200).json({
+        success: true,
+        message: "Comment successfully created",
+        data: comment
+      });
+    } catch (err) {
+        // const errors = handleErrors();
+     console.log(err);
+    }
     }
     async updateComment(req, res) {
         const commentId = req.params._id;

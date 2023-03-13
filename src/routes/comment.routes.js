@@ -6,7 +6,7 @@ const {
     getAllComments
 } = require('../controllers/comment.controller');
 
-router.post('/', createComment);
+router.post('/create', createComment);
 router.patch('/:id', updateComment);
 router.get('/:id', getComment);
 router.get('/', getAllComments);
