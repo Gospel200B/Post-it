@@ -6,6 +6,7 @@ Here includes some of the links which can help you on the way.
 Postman collection Api documentation: https://documenter.getpostman.com/view/25953042/2s93Jus2uW
 
 Db model: https://dbdesigner.page.link/5i1nsG5v24swYgUWA
+Render.com URI: https://gospel200b-post-it-gospel.onrender.com
 
 
 # Instructions
