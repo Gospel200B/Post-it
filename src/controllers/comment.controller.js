@@ -70,7 +70,7 @@ class CommentController {
         const commentId = req.params._id;
 
         const existingComment = await commentService.getComment({
-            _id: postId
+            _id: commentId
         })
         if (!existingComment) {
             res.status(403).json({

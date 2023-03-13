@@ -19,6 +19,14 @@ mongoose
     console.log(err);
   });
 
+
+  //Random avatar generation
+  app.post('/api/v1/auth/signup', (req, res) => {
+    let {userName} = req.body;
+    let avater = `https://api.dicebear.com/5.x/micah/${userName}/svg`
+    return res.json({avater})
+  })
+
 const port = process.env.PORT || 5500;
 
 app.listen(port, () => {
